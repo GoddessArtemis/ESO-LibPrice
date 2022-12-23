@@ -188,11 +188,10 @@ function LibPrice.ATTPrice(item_link)
     return nil
   end
 
-  local day_secs = 24 * 60 * 60
   local att
   for _, day_ct in ipairs({ self.day_ct_short, self.day_ct_long }) do
     att = ArkadiusTradeTools.Modules.Sales:GetAveragePricePerItem(
-      item_link, GetTimeStamp() - (day_secs * day_ct))
+      item_link, GetTimeStamp() - (ZO_ONE_DAY_IN_SECONDS * day_ct))
     if att and 0 < att then
       return { avgPrice = att
       , numDays = day_ct
@@ -611,7 +610,7 @@ function LibPrice.NPCPrice(item_link)
   local purchasePrice
   if MasterMerchant and MasterMerchant["vendor_price_table"] then
     local itemId = GetItemLinkItemId(itemLink)
-    local itemType = GetItemLinkItemType(itemLink)  
+    local itemType = GetItemLinkItemType(itemLink)
     if MasterMerchant["vendor_price_table"][itemType] then
       purchasePrice = MasterMerchant["vendor_price_table"][itemType][itemId]
     end
