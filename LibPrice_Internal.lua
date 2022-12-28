@@ -64,6 +64,17 @@ function LibPrice.CurrencyList()
   return LibPrice.CURRENCY_LIST
 end
 
+function LibPrice.PriceTypes()
+  if not LibPrice.PRICE_TYPES then
+    LibPrice.SOURCE_LIST = {
+      LibPrice.PRICE_BID
+    , LibPrice.PRICE_ASK
+    , LibPrice.PRICE_SALE
+    }
+  end
+  return LibPrice.SOURCE_LIST
+end
+
 function LibPrice.Price(source_key, item_link)
   if not source_key then return nil end
   if not item_link then return nil end
