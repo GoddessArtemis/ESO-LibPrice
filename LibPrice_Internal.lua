@@ -456,6 +456,7 @@ end
 function LibPrice.NAHPrice(item_link)
   if not (NirnAuctionHouse and NirnAuctionHouse.PriceTable) then return nil end
   local itemId = NirnAuctionHouse:GetItemID(item_link)
+  if not itemId then return nil end
   local quality = GetItemLinkQuality(item_link)
   local powerOrRating = GetItemLinkWeaponPower(item_link) + GetItemLinkArmorRating(item_link, false)
   local level = GetItemLinkRequiredLevel(item_link)
